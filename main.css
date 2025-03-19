@@ -1,18 +1,32 @@
 body {
-    background-color: rgb(230, 240, 255);
-    color: maroon;
-    font-family: Arial;
-    margin: 20px;
+    background-color: #fce4ecf8;
+    color: #D81B60;
+    font-family: 'Nunito', sans-serif;
 }
 main {
-    background-color: rgba(174, 253, 227, 0.281);
+    background-color: rgba(255, 182, 193, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+}
+h1{
+    font-family: 'Playfair Display', serif;
+    color: #e22d75;
+    text-align: center;
+    letter-spacing: 1px;
 }
 header {
-    background-color: rgba(120, 251, 255, 0.219);
+    background-color: rgba(255, 224, 224, 0.4);
+    padding: 10px;
+    border-bottom: 1px solid #FFB6C1;
 }
 footer {
-    background-color: rgba(120, 251, 255, 0.219);
+    background-color: rgba(255, 224, 224, 0.4);
+    padding: 10px;
+    text-align: center;
+    font-size: 0.8em;
 }
 a{
     text-decoration: none;
+    color: #E91E63;
+    font-weight: bold;
 }
