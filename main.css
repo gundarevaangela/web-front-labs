@@ -29,13 +29,15 @@ a{
     text-decoration: none;
     color: #E91E63;
     font-weight: bold;
+    transition: 0.5s 0.3s;
+    
 }
 
 a:link{
     text-decoration: none; /* Убираем подчеркивание по умолчанию */
     color: #E91E63;         /* Яркий розовый для обычных ссылок */
     font-weight: bold;     /* Сделаем ссылки жирными */
-    transition: all 0.5s ease;
+    
 }
 a:visited{
     color: #C2185B; 
