@@ -55,3 +55,17 @@ a:active{
     background-color: #D81B60; /* Более темный розовый фон при нажатии */
     box-shadow: none;
 }
+div.menu {
+    border: 2px solid #FFB6C1;
+    border-radius: 10px;
+    width: 300px;
+    margin: 20px auto; 
+    padding: 10px;
+    background-color: #FFF0F5;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+div.menu:hover {
+    background-color: #FFD1DC;
+    border-color: #FF69B4;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
