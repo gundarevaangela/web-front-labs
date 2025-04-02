@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundareva Angela. Прогресс</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+        
+        .block1 {
+            position: relative;        
+            
+            font-size: 25px;
+            font-weight: bold;
+            width: 400px;
+            max-width: 90%;
+            height: 200px;
+            text-align: center;
+            margin: 0 auto;
+            padding: 20px;
+            z-index: 3;
+            border: 2px solid #FFB6C1;
+            border-radius: 10px;
+            background-color: #FFF0F5;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .blockprogress {
+            border: 2px solid #FFB6C1;
+            background-color: rgb(241, 223, 235);
+            width: 250px;
+            height: 30px;
+            top: -140px;
+            position: relative;
+            margin: 0 auto;
+            z-index: 4;
+        }
+
+        .progress {
+            position: relative;
+            width: 0px;
+            height: 30px;
+            background-color: rgb(223, 28, 106);
+            z-index: 5;
+        }
+
+        .button {
+            border: 2px solid #FFB6C1;
+            background-color: #FFD1DC;
+           
+            
+            width: 200px;
+            height: 25px;
+            padding: 5px;
+            padding-top: 10px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #0004;
+            position: relative;
+            margin: 0 auto;
+            top: -100px;
+            z-index: 4;
+        }
+
+        div.button:hover {
+            box-shadow: 0 0 10px rgba(235, 38, 176, 0.8);
+            cursor: pointer;
+        }
+
+        div.button:active {
+            box-shadow: none;
+        }
+
+        .activ:active .progress {
+            width: 250px;
+            z-index: 5;
+            transition: width 5s;
+        }
+    </style>
+</head>
+<body>
+
+    <header>НГТУ. ФБ. Лабораторная 4</header>
+    <main>
+        <div class="block1">Степень прогресса</div>
+        <div class="activ">
+            <div class="blockprogress"> 
+                <div class="progress"></div> 
+            </div>
+            <div class="button">Нажмите и удерживайте</div>
+        </div>
+    </main>
+    <footer>
+        &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
+
+
