@@ -16,6 +16,14 @@
             let result = a+b;
             alert('Сумма '+ a +' и '+ b +' равна' + result);
         }
+
+        function showAuthor(){
+            let author = 'Автор страницы: \n Gundareva Angela'
+            alert (author)
+        }
+        function showHi(){
+            alert (' Спасибо, что смотрите мою лабораторную')
+        }
         
     </script>
     <style>
@@ -36,9 +44,9 @@
     <header>НГТУ. ФБ. Лабораторная 5</header>
     <main>
         <div class="message" onclick="showSum()">Сколько будет 5154+7891</div>
-        <div class="message">Узнать, кто автор страницы</div>
+        <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
     </main>
-    <footer>
+    <footer ondblclick="showHi()">
         &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
     </footer>
 </body>
