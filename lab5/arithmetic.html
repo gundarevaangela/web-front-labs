@@ -135,7 +135,16 @@
         function showHi(){
             alert (' Спасибо, что смотрите мою лабораторную')
         }
-        
+        function changeOutput(buttonNum, backColor, textColor, borderType, borderRad, boxWid, borderWid) {
+            let output = document.getElementById('output');
+            output.innerHTML = 'Нажата кнопка ' + buttonNum;
+            output.style.backgroundColor = backColor;
+            output.style.color = textColor;
+            output.style.borderStyle = borderType;
+            output.style.borderRadius = borderRad;
+            output.style.width = boxWid;
+            output.style.borderWidth = borderWid;
+        }
     </script>
     <style>
      .message {
@@ -162,6 +171,15 @@
         <div class="message" onclick="showDiv()">Найти отношение чисел</div>
         <div class="message" onclick="showDegree()">Возвести в степень</div>
         <div class="message" onclick="showAuthor()">Узнать, кто автор страницы</div>
+        
+        <div>
+            <input type="button" value="Кнопка 1" onclick="changeOutput(1, '#663399', '#FFB6C1', 'solid', '5px', '300px', '2px')">
+            <input type="button" value="Кнопка 2" onclick="changeOutput(2, '#333333', '#FFD1DC', 'dotted', '10px', '250px', '3px')">
+            <input type="button" value="Кнопка 3" onclick="changeOutput(3, 'white', '#F06292', 'dashed', '15px', '350px', '4px')">
+            <input type="button" value="Кнопка 4" onclick="changeOutput(4, '#880E4F', '#FF80AB', 'double', '20px', '150px', '5px')">
+        </div>
+
+        <div id="output"></div>
     </main>
     <footer ondblclick="showHi()">
         &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
