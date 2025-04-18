@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundareva Angela. Круги</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script>
+        function Remove(circle) {
+            circle.style.opacity = '0';
+        }
+
+        function Return() {
+            document.querySelectorAll('.circle').forEach(function(circle) {
+                circle.style.opacity = '1';
+            });
+        }
+
+    </script>
+    <style>
+        .circle{
+            border-radius: 100%;
+            border: 2px solid #FFB6C1;
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            text-align: center;
+            font-size: 50pt;
+            position: absolute;
+            cursor: pointer;
+            transition: 0.5s;
+            line-height: 100px;
+            box-shadow: 0 0 10px rgba(201, 64, 121, 0.904);
+        }
+        .b1 {
+            background-color: #FF69B4;
+            margin-top: 100px;
+            margin-left: 600px;
+        }
+
+        .b2 {
+            background-color: #FFB6C1;
+            margin-top: 500px;
+            margin-left: 200px;
+        }
+
+        .b3 {
+            background-color: #FFC0CB;
+            margin-top: 300px;
+            margin-left: 900px;
+        }
+
+        .b4 {
+            background-color: #FF1493;
+            margin-top: 400px;
+            margin-left: 1400px;
+        }
+
+        .b5 {
+            background-color: #E6A8D7;
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+
+        .b6 {
+            background-color: #F08080;
+            margin-top: 100px;
+            margin-left: 1300px;
+        }
+
+        .b7 {
+            background-color: #DB7093;
+            margin-top: 300px;
+            margin-left: 400px;
+        }
+
+        .b8 {
+            background-color: #FF7777;
+            margin-top: 500px;
+            margin-left: 700px;
+        }
+
+        .b9 {
+            background-color: #FF6347;
+            margin-top: 50px;
+            margin-left: 1000px;
+        }
+
+        .b10 {
+            background-color: #FFF0F5;
+            margin-top: 450px;
+            margin-left: 1100px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>НГТУ. ФБ. Лабораторная 5</header>
+    <main>
+        <div class="circle b1" id="output1" onclick="Remove(this)">1</div>
+        <div class="circle b2" id="output2" onclick="Remove(this)">2</div>
+        <div class="circle b3" id="output3" onclick="Remove(this)">3</div>
+        <div class="circle b4" id="output4" onclick="Remove(this)">4</div>
+        <div class="circle b5" id="output5" onclick="Remove(this)">5</div>
+        <div class="circle b6" id="output6" onclick="Remove(this)">6</div>
+        <div class="circle b7" id="output7" onclick="Remove(this)">7</div>
+        <div class="circle b8" id="output8" onclick="Remove(this)">8</div>
+        <div class="circle b9" id="output9" onclick="Remove(this)">9</div>
+        <div class="circle b10" id="output10" onclick="Remove(this)">10</div>
+        <input type="button" value="Вернуть" onclick="Return()">
+    </main>
+    <footer>
+        &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
