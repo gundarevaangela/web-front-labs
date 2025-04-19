@@ -34,6 +34,11 @@
             document.getElementById('hueRotateOutput').innerText = hueRotateValue + 'deg'; 
             document.getElementById('myImage').style.filter = 'hue-rotate('+ hueRotateValue +'deg)';  
         } 
+        function invertChange() { 
+            let invertValue = document.getElementById('invertValue').value; 
+            document.getElementById('invertOutput').innerText = invertValue + '%'; 
+            document.getElementById('myImage').style.filter = 'invert('+ invertValue/100 +')'; 
+        } 
     </script>
     <style>
        main {
@@ -80,6 +85,11 @@
                 Оттенок цвета: 
                 <input type="range" min="0" max="360" value="0" onchange="hueRotateChange()" id="hueRotateValue"> 
                 <span id="hueRotateOutput">0deg</span> 
+            </div> 
+            <div> 
+                Инвертирование цвета: 
+                <input type="range" min="0" max="100" value="0" onchange="invertChange()" id="invertValue"> 
+                <span id="invertOutput">0%</span> 
             </div> 
         </div>
        <div><img src="cat.png" id="myImage" ></div>
