@@ -44,6 +44,11 @@
             document.getElementById('saturateOutput').innerText = saturateValue + '%'; 
             document.getElementById('myImage').style.filter = 'saturate('+ saturateValue/100 +')'; 
         } 
+        function sepiaChange() { 
+            let sepiaValue = document.getElementById('sepiaValue').value; 
+            document.getElementById('sepiaOutput').innerText = sepiaValue + '%'; 
+            document.getElementById('myImage').style.filter = 'sepia('+ sepiaValue/100 +')'; 
+        } 
     </script>
     <style>
        main {
@@ -100,6 +105,11 @@
                 Насыщенность цвета: 
                 <input type="range" min="0" max="500" value="100" onchange="saturateChange()" id="saturateValue"> 
                 <span id="saturateOutput">100%</span> 
+            </div> 
+            <div> 
+                Сепия: 
+                <input type="range" min="0" max="100" value="0" onchange="sepiaChange()" id="sepiaValue"> 
+                <span id="sepiaOutput">0%</span> 
             </div> 
         </div>
        <div><img src="cat.png" id="myImage" ></div>
