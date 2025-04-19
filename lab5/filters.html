@@ -39,6 +39,11 @@
             document.getElementById('invertOutput').innerText = invertValue + '%'; 
             document.getElementById('myImage').style.filter = 'invert('+ invertValue/100 +')'; 
         } 
+        function saturateChange() { 
+            let saturateValue = document.getElementById('saturateValue').value; 
+            document.getElementById('saturateOutput').innerText = saturateValue + '%'; 
+            document.getElementById('myImage').style.filter = 'saturate('+ saturateValue/100 +')'; 
+        } 
     </script>
     <style>
        main {
@@ -62,9 +67,9 @@
     <main>
         <div>
             <div>
-            Размытие:
-            <input type="range" min="0" max="20" value="0" onchange="blurChange()" id="blurValue">
-            <span id="blurOutput"></span>
+                Размытие:
+                <input type="range" min="0" max="20" value="0" onchange="blurChange()" id="blurValue">
+                <span id="blurOutput"></span>
             </div>
             <div>
                 Яркость:
@@ -90,6 +95,11 @@
                 Инвертирование цвета: 
                 <input type="range" min="0" max="100" value="0" onchange="invertChange()" id="invertValue"> 
                 <span id="invertOutput">0%</span> 
+            </div> 
+            <div> 
+                Насыщенность цвета: 
+                <input type="range" min="0" max="500" value="100" onchange="saturateChange()" id="saturateValue"> 
+                <span id="saturateOutput">100%</span> 
             </div> 
         </div>
        <div><img src="cat.png" id="myImage" ></div>
