@@ -19,6 +19,11 @@
             document.getElementById('brightnessOutput').innerText = value + '%'; 
             document.getElementById('myImage').style.filter = 'brightness('+ value/100 +')'; 
         } 
+        function contrastChange() { 
+            let contrastValue = document.getElementById('contrastValue').value; 
+            document.getElementById('contrastOutput').innerText = contrastValue + '%'; 
+            document.getElementById('myImage').style.filter = 'contrast('+ contrastValue/100 +')'; 
+        }
     </script>
     <style>
        main {
@@ -41,14 +46,19 @@
     <header>НГТУ. ФБ. Лабораторная 5</header>
     <main>
         <div>
-            Фильтр blur:
+            Размытие:
             <input type="range" min="0" max="20" value="0" onchange="blurChange()" id="blurValue">
             <span id="blurOutput"></span>
-            <div>
-                Фильтр brightness:
-                <input type="range" min="0" max="500" value="100" onchange="brightnessChange()" id="brightnessValue"> 
-                <span id="brightnessOutput">100%</span> 
-            </div>
+        <div>
+            Яркость:
+            <input type="range" min="0" max="500" value="100" onchange="brightnessChange()" id="brightnessValue"> 
+            <span id="brightnessOutput">100%</span> 
+        </div>
+        <div> 
+            Контраст: 
+            <input type="range" min="0" max="500" value="100" onchange="contrastChange()" id="contrastValue"> 
+            <span id="contrastOutput">100%</span> 
+        </div> 
         </div>
        <div><img src="cat.png" id="myImage" ></div>
     </main>
