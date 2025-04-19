@@ -24,6 +24,11 @@
             document.getElementById('contrastOutput').innerText = contrastValue + '%'; 
             document.getElementById('myImage').style.filter = 'contrast('+ contrastValue/100 +')'; 
         }
+        function grayscaleChange() { 
+            let grayscaleValue = document.getElementById('grayscaleValue').value; 
+            document.getElementById('grayscaleOutput').innerText = grayscaleValue + '%'; 
+            document.getElementById('myImage').style.filter = 'grayscale('+ grayscaleValue +')'; 
+        } 
     </script>
     <style>
        main {
@@ -46,19 +51,26 @@
     <header>НГТУ. ФБ. Лабораторная 5</header>
     <main>
         <div>
+            <div>
             Размытие:
             <input type="range" min="0" max="20" value="0" onchange="blurChange()" id="blurValue">
             <span id="blurOutput"></span>
-        <div>
-            Яркость:
-            <input type="range" min="0" max="500" value="100" onchange="brightnessChange()" id="brightnessValue"> 
-            <span id="brightnessOutput">100%</span> 
-        </div>
-        <div> 
-            Контраст: 
-            <input type="range" min="0" max="500" value="100" onchange="contrastChange()" id="contrastValue"> 
-            <span id="contrastOutput">100%</span> 
-        </div> 
+            </div>
+            <div>
+                Яркость:
+                <input type="range" min="0" max="500" value="100" onchange="brightnessChange()" id="brightnessValue"> 
+                <span id="brightnessOutput">100%</span> 
+            </div>
+            <div> 
+                Контраст: 
+                <input type="range" min="0" max="500" value="100" onchange="contrastChange()" id="contrastValue"> 
+                <span id="contrastOutput">100%</span> 
+            </div> 
+            <div>
+                Оттенки серого: 
+            <input type="range" min="0" max="100" value="0" onchange="grayscaleChange()" id="grayscaleValue"> 
+            <span id="grayscaleOutput">0%</span>
+            </div>
         </div>
        <div><img src="cat.png" id="myImage" ></div>
     </main>
