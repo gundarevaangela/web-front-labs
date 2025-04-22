@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundareva Angela. Дополнительное задание</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script>
+         function filterShow(event) {
+            let img = event.target;
+            let rect = img.getBoundingClientRect();
+            // Определяем, на каком расстоянии от левого края картинки находится курсор
+            let x = event.clientX - rect.left;
+            // Считаем, в каком проценте от ширины картинки находится курсор
+            let width = rect.width;
+            let percent = (x / width) * 100;
+
+            let filter = '';
+            let filterName = '';
+            let filterValue = '';
+
+            if (event.ctrlKey) {
+                filter = 'grayscale(' + percent + '%)';
+                filterName = 'grayscale';
+                filterValue = Math.round(percent) + '%';
+            } else if (event.altKey) {
+                let val = percent * 5;
+                filter = 'brightness(' + val + '%)';
+                filterName = 'brightness';
+                filterValue = Math.round(val) + '%';
+            } else if (event.shiftKey) {
+                filter = 'invert(' + percent + '%)';
+                filterName = 'invert';
+                filterValue = Math.round(percent) + '%';
+            } else {
+                let px = (percent / 100 * 20).toFixed(1);
+                filter = 'blur(' + px + 'px)';
+                filterName = 'blur';
+                filterValue = px + 'px';
+            }
+
+            img.style.filter = filter;
+            document.getElementById('filterName').textContent = filterName;
+            document.getElementById('filterPower').textContent = filterValue;
+        }
+
+        function filterHide(event) {
+            event.target.style.filter = 'none';
+            document.getElementById('filterName').textContent = 'отсутствует';
+            document.getElementById('filterPower').textContent = '0';
+        }
+
+    </script>
+    <style>
+        main {
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            color: black;
+        }
+        img {
+            width: 300px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            cursor: crosshair;
+        }
+        
+        .instr {
+            background-color: #f8bbd0; 
+            border: 3px solid #e91e63; 
+            padding: 15px;
+            margin-top: 5px;
+            border-radius: 8px;
+            display: inline-block;
+            text-align: left;
+            max-width: 500px;
+        }
+        .filter {
+            margin-top: 10px;
+            font-size: 30px;
+            color: #D81B60;
+        
+        }
+        
+    </style>
+</head>
+<body>
+    <header>НГТУ. ФБ. Лабораторная 5</header>
+    <main>
+        <h1>Наведите курсор на изображение</h1>
+
+        <div class="instr">
+            <b>Управление:</b><br>
+            1. Поместите курсор на изображение, чтобы применить <b>Размытие</b>.<br>
+            2. Задействуйте клавиши для прочих визуальных эффектов:<br>
+            &bull; <b>Ctrl</b> &mdash; градации серого<br>
+            &bull; <b>Alt</b> &mdash; усиление света<br>
+            &bull; <b>Shift</b> &mdash; инверсия цветов<br>
+            Величина эффекта зависит от положения курсора (правее = сильнее).
+        </div>
+
+        <br><br>
+
+        <img src="https://s10.stc.yc.kpcdn.net/share/i/4/2235343/wr-750.webp"
+             onmousemove="filterShow(event)"
+             onmouseout="filterHide(event)">
+
+        <div class="filter">
+            Фильтр: <span id="filterName">отсутствует</span><br>
+            Интенсивность: <span id="filterPower">0</span>
+        </div>
+    </main>
+    <footer>
+        &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
