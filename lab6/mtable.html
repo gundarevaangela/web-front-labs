@@ -8,16 +8,24 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="icon" href="../favicon-32x32.png">
     <link rel="icon" href="../favicon-16x16.png">
+
+    <script>
+        function showMuipleTable(){
+            let tbl = document.getElementById('mtable')
+            tbl.innerHTML = '<h1>Таблица умножения</h1>'
+            for (i =1; i<=10; i++) {
+                let s = `<div> ${i} * 7 = ${i*7} <div>`;
+                tbl.innerHTML += s;
+            }
+        }
+       
+    </script>
 </head>
-<body>
+<body onload=" showMuipleTable()">
     
     <header>НГТУ. ФБ. Лабораторная 6</header>
     <main>
-        <h1>Лабораторная 6</h1>
-        <ul>
-            <li><a href="mtable.html">Таблица умножения</a></li>
-            
-        </ul>
+        <div id="mtable"></div>
     </main>
     <footer>
         &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
