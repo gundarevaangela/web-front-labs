@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundareva Angela. Прогноз погоды</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+       #weather-info {
+            text-align: center;
+            font-size: 20px;
+            background-color: #FCE4EC;
+            border: 2px solid #E91E63;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(233, 30, 99, 0.25);
+            padding: 15px;
+        }
+        button{
+            background-color: #D81B60;
+            border-radius: 5px;
+            box-shadow: 0 0 10px white;
+            padding:  10px;
+            color: #ffffff;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        button:hover {
+            transition: 0.2s;
+            background-color:  rgb(244, 175, 175);
+            box-shadow: 0 0 5px #000; 
+        }
+
+    </style>
+
+
+
+    
+    <script>
+        function getWeatherForecast() {
+            const url = 'https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m&timezone=Asia%2FBangkok';
+
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    const times = data.hourly.time;
+                    const temperatures = data.hourly.temperature_2m;
+
+                    let temp8 = null, temp12 = null, temp20 = null;
+
+                    for (let i = 0; i < times.length; i++) {
+                        const time = new Date(times[i]).getHours(); 
+                        if (time === 8 && temp8 === null) { 
+                            temp8 = temperatures[i];
+                        } else if (time === 12 && temp12 === null) { 
+                            temp12 = temperatures[i];
+                        } else if (time === 20 && temp20 === null) { 
+                            temp20 = temperatures[i];
+                        } 
+                    }
+
+                    
+                    let weatherInfoHtml = `
+                        <div id="weather-info">
+                            <h2>Прогноз погоды на сегодня</h2>
+                            <p><b>Температура в 8:00:</b> ${temp8 + ' °C' }</p>
+                            <p><b>Температура в 12:00:</b> ${temp12 + ' °C' }</p>
+                            <p><b>Температура в 20:00:</b> ${temp20 + ' °C' }</p>
+                            <p>Данные предоставлены <a href="https://open-meteo.com/en/docs">Open-Meteo</a></p>
+                        </div>
+                    `;
+
+                    document.getElementById('weather-forecast').innerHTML = weatherInfoHtml;
+
+                    
+                    document.querySelector('button').style.display = 'none';
+                })
+                
+                
+        }
+        </script>
+
+</head>
+<body >
+
+    <header>НГТУ. ФБ. Лабораторная 7</header>
+    <main>
+       
+        <button onclick="getWeatherForecast()">Получить прогноз погоды</button>
+        <div id="weather-forecast"></div>
+    </main>
+    <footer>
+        &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
+
