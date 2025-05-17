@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundareva Angela. Котировки ЦИАН</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+        
+
+        td {
+            background-color: #FFB6C1; 
+            border-radius: 5px;
+            box-shadow: 0 0 10px white;
+            padding: 10px;
+            font-size: 20px;
+            color: #ffffff;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+
+        th, button {
+            background-color: #D81B60; 
+            border-radius: 5px;
+            box-shadow: 0 0 10px white;
+            padding: 10px;
+            color: #ffffff;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+        }
+
+        #detail {
+
+            margin: 10px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-weight: bold;
+            text-align: center;
+            font-size: 18px;
+        }
+
+        button:hover {
+            transition: 0.2s;
+            background-color: #FFC0CB; 
+            box-shadow: 0 0 5px #000;
+
+        }
+
+
+    </style>
+
+
+
+    <script src="stock-data.js"></script>
+    <script>
+        function showStockData() {
+            let table = document.getElementById('stock-table');
+            table.innerHTML = '';
+            
+            let headerRow = document.createElement('tr');
+            let headers = ['Дата', 'Цена акций', 'Разница'];
+            for (let headerText of headers) {
+                let th = document.createElement('th');
+                th.innerText = headerText;
+                headerRow.appendChild(th);
+            }
+            table.appendChild(headerRow);
+
+            for (let i = 0; i < dates.length; i++) {
+                let tr = document.createElement('tr');
+
+                let dateTd = document.createElement('td');
+                dateTd.innerText = dates[i];
+                tr.appendChild(dateTd);
+
+                let priceTd = document.createElement('td');
+                priceTd.innerText = prices[i];
+                tr.appendChild(priceTd);
+
+                let differenceTd = document.createElement('td');
+                let difference;
+                if (i > 0) {
+                    difference = prices[i] - prices[i - 1];
+                    difference = difference.toFixed(2);
+                } else {
+                    difference = '—';
+                }
+
+                if (i > 0) {
+                    if (difference > 0) {
+                        differenceTd.classList.add('positive');
+                    } else if (difference < 0) {
+                        differenceTd.classList.add('negative');
+                    }
+                }
+                differenceTd.innerText = difference;
+                tr.appendChild(differenceTd);
+
+                table.appendChild(tr);
+            }
+
+            let sum = 0;
+            let min = prices[0];
+            let max = prices[0];
+
+            for (let price of prices) {
+                sum += price;
+                if (price < min) min = price;
+                if (price > max) max = price;
+            }
+
+            let average = (sum / prices.length).toFixed(2);
+
+            let detailDiv = document.getElementById('detail');
+            detailDiv.innerHTML = `
+                Средняя цена стоимости акции: ${average} руб.<br>
+                Максимальная цена стоимости акции: ${max} руб.<br>
+                Минимальная цена стоимости акции: ${min} руб.
+            `;
+
+            let button = document.querySelector('button');
+            button.remove();
+        }
+    </script>
+
+</head>
+<body >
+
+    <header>НГТУ. ФБ. Лабораторная 7</header>
+    <main>
+        <h1 >Курс акций ЦИАН</h1>
+        <button onclick="showStockData()">Курс акций ЦИАН</button>
+        <table border="1"  id="stock-table"></table>
+        <div id="detail"></div>
+    </main>
+    <footer>
+        &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
+
