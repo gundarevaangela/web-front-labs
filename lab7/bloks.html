@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundareva Angela. Добавление блоков</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+       button {
+            background-color: #E91E63; /* Ярко-розовый */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.5s;
+        }
+
+        button:hover {
+            background-color: #F06292; 
+        }
+
+        .new-block {
+            background-color: #FFC0CB; 
+            height: 100px; 
+            border: 2px dashed #E91E63; 
+            margin: 10px;
+            width: 90%;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1); 
+            transition: all 0.3s ease; 
+            display: flex;         
+            justify-content: center; /* горизонтально */
+            align-items: center;    /*  и вертикально */
+            font-family: sans-serif; 
+            color: #777;          
+        }
+
+        .new-block:hover {
+            transform: scale(1.03); /* Небольшое увеличение при наведении */
+            box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.2); 
+        }
+    </style>
+
+
+
+    <script>
+        function addNewBlock() {
+            let newBlock = document.createElement('div');
+            newBlock.classList.add('new-block'); // Присваиваем блоку класс
+            document.querySelector('main').appendChild(newBlock);
+        }
+     </script>
+
+</head>
+<body >
+
+    <header>НГТУ. ФБ. Лабораторная 7</header>
+    <main>
+        <button onclick="addNewBlock()"> Добавить блок </button>
+    </main>
+    <footer>
+        &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
+
