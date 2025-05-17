@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundareva Angela. Курс Евро</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <style>
+        #euro-info {
+            
+            text-align: center;
+            font-size: 20px;
+            background-color: #FCE4EC;
+            border: 2px solid #E91E63;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(233, 30, 99, 0.25);
+            padding: 15px;
+            
+        }
+
+        #euro-info:hover {
+            box-shadow: 0 6px 12px rgba(233, 30, 99, 0.4);
+            background-color: #FAD1E3;
+        }
+
+        #euro-info:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+            background-color: #f2f2f2; 
+        }
+
+
+        button{
+            background-color: #D81B60;
+            border-radius: 5px;
+            box-shadow: 0 0 10px white;
+            padding:  10px;
+            color: #ffffff;
+            text-align: center;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        button:hover {
+            transition: 0.2s;
+            background-color:  rgb(244, 175, 175);
+            box-shadow: 0 0 5px #000; 
+        }
+    </style>
+
+
+ 
+    <script>
+       function getEuroExchangeRate() {
+            const url = 'https://www.cbr-xml-daily.ru/daily_json.js';
+            fetch(url)
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(json){
+                    const euroRate = json.Valute.EUR.Value;
+                    const previousRate = json.Valute.EUR.Previous;
+                const currentDate = json.Date; 
+
+                const rateDifference = (euroRate - previousRate).toFixed(4); 
+                    console.log(euroRate);
+
+                let rateChangeText = '';
+                let rateChangeClass = '';
+
+                if (rateDifference > 0) {
+                    rateChangeText = 'Курс вырос на ' + rateDifference;
+                    rateChangeClass = 'up';
+                } else if (rateDifference < 0) {
+                    rateChangeText = 'Курс упал на ' + Math.abs(rateDifference); 
+                    rateChangeClass = 'down';
+                } else {
+                    rateChangeText = 'Курс не изменился';
+                    rateChangeClass = '';
+                }
+
+                const euroInfoElement = document.getElementById('euro-rate');
+                euroInfoElement.innerHTML = `
+                    <div id="euro-info">
+                        <h2>Текущий курс Евро</h2>
+                        <p><b>Дата запроса:</b> ${new Date(currentDate).toLocaleDateString('ru-RU')}</p>
+                        <p><b>Текущий курс:</b> ${euroRate.toFixed(4)} RUB</p>
+                        <p><b>Предыдущий курс:</b> ${previousRate.toFixed(4)} RUB</p>
+                        <p class="rate-change ${rateChangeClass}"><b>Изменение курса:</b> ${rateChangeText}</p>
+                        <div id="cbr-link"><a href="https://www.cbr-xml-daily.ru/">Условия использования ресурса</a></div>
+                    </div>
+                    
+                `; })
+                document.querySelector('button').style.display = 'none';
+        }  
+    </script>
+
+</head>
+<body >
+
+    <header>НГТУ. ФБ. Лабораторная 7</header>
+    <main>
+        <button onclick="getEuroExchangeRate()">Получить курс евро</button>
+        <div id="euro-rate"></div>
+    </main>
+    <footer>
+        &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
+
