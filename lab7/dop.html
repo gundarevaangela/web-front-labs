@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gundareva Angela. Дополнительное задание</title>
+    <link rel="stylesheet" href="../main.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link rel="icon" href="../favicon-32x32.png">
+    <link rel="icon" href="../favicon-16x16.png">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script>
+        function getWeatherData() {
+            
+            const url = "https://api.open-meteo.com/v1/forecast?latitude=55.0415&longitude=82.9346&hourly=temperature_2m,relative_humidity_2m&current=temperature_2m,relative_humidity_2m&timezone=auto&past_days=1&forecast_days=1";
+            fetch(url)
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                
+                    const currentTemperature = data.current.temperature_2m;
+                    const currentHumidity = data.current.relative_humidity_2m;
+
+                    
+                    document.querySelector('#current-temperature').textContent = currentTemperature;
+                    document.querySelector('#current-humidity').textContent = currentHumidity;
+
+                    
+                    const hourlyData = data.hourly;
+                    const timeLabels = hourlyData.time.map(function(time) { return new Date(time).toLocaleString() });
+                    
+                    const temperatureData = hourlyData.temperature_2m;
+                    const humidityData = hourlyData.relative_humidity_2m;
+
+                    
+                    const ctx = document.getElementById('weatherChart').getContext('2d');
+                    const weatherChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: timeLabels,
+                            datasets: [{
+                                label: 'Температура (°C)',
+                                data: temperatureData,
+                                backgroundColor: 'rgba(255, 99, 132)',
+                                borderColor: 'rgba(255, 99, 132)'
+                            }, {
+                                label: 'Влажность (%)',
+                                data: humidityData,
+                                backgroundColor: 'rgba(54, 162, 235)',
+                                borderColor: 'rgba(54, 162, 235)'
+                            }]
+                        },
+                });
+            })  
+        }
+    </script>
+    <style>
+       
+            .chart-container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #ffe4ec;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.6);
+            border: 1px solid rgba(255, 192, 203, 0.5);
+        }
+
+        .current-weather, h1 {
+            margin: 10px;
+            font-family: 'Trebuchet MS', sans-serif;
+            font-weight: bold;
+            text-align: center;
+            background-color: #fff0f5;
+            color: #a0527d;
+            border-radius: 12px;
+            padding: 10px;
+            border: 1px solid rgba(255, 192, 203, 0.5);
+            box-shadow: 0 0 10px rgba(255, 182, 193, 0.4);
+        }
+
+        .current-weather {
+            font-size: 20px;
+        }
+
+    </style>
+
+</head>
+<body onload="getWeatherData()" >
+
+    <header>НГТУ. ФБ. Лабораторная 7</header>
+    <main>
+       <h1>Прогноз погоды в Новосибирске</h1>
+
+        <div class="current-weather">
+            <p>Текущая температура: <span id="current-temperature"></span>°C</p>
+            <p>Текущая влажность: <span id="current-humidity"></span>%</p>
+        </div>
+    
+        <div class="chart-container">
+            <canvas id="weatherChart"></canvas>
+        </div>
+    </main>
+    <footer>
+        &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
+    </footer>
+</body>
+</html>
+
