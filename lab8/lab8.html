@@ -36,9 +36,13 @@
             <div class="card" style="width: 18rem">
                 <div class="card-body">
                     <h2 class="card-title">Цветы</h2>
+                    <button class="btn btn-dark" @click="addFlower">Добавить Цветок</button>
                     <ul class="list-group">
                         <li v-for="(flower, id) in flowers" class="list-group-item">
                             {{flower}} <button @click="edit( id, flower)"><i class="bi bi-pencil-square"></i></button>
+                            <button @click="removeFlower(id)" class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+                        
+
                         </li>
                     </ul>
                 </div>
@@ -132,7 +136,28 @@
                 sum() {
                     this.result =this.a + this.b;
                 },
-                
+                edit(id, flower) {
+                    let newName = prompt('Введите имя цветка:', flower);
+                    if (newName) { // Проверка на то, что пользователь не нажал "Отмена" или не ввел пустую строку
+                        this.flowers[id] = null;
+                        setTimeout(() => {
+                            this.flowers[id] = newName;
+                        }, 1000); 
+                    }
+                },
+                removeFlower(id) {
+                    this.flowers.splice(id, 1); // Удаляем элемент из массива
+                },
+                addFlower() {
+                    let newFlower = prompt('Введите название нового цветка:');
+                    if (newFlower) { // Проверка на то, что пользователь не нажал "Отмена" или не ввел пустую строку
+                        this.flowers.push(newFlower); // Добавляем новый элемент в массив
+                    }
+                },
+                sum() {
+                    this.result = this.a + this.b;
+                },
+
             }
         }).mount('#app');
     </script>
