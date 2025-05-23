@@ -19,6 +19,9 @@
         
         <div id="app"> 
             <h1 :title="massageRus">{{massage}}</h1>
+            <p>Счётчик: {{ counter }}</p>
+            <button @click="incCounter">++</button>
+            <button @click="decCounter">--</button>
         </div>
         
     </main>
@@ -31,8 +34,17 @@
                 return{
                     massage: 'Hello!',
                     massageRus: "Привет!",
+                    counter: 1,
                 }
             },
+            methods: {
+                incCounter() {
+                    this.counter++;
+                },
+                decCounter() {
+                    this.counter--;
+                }
+            }
         }).mount('#app');
     </script>
 </body>
