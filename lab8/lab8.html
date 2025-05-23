@@ -9,18 +9,31 @@
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="icon" href="../favicon-32x32.png">
     <link rel="icon" href="../favicon-16x16.png">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
     
     <header>НГТУ. ФБ. Лабораторная 8</header>
     <main>
         <h1>Лабораторная 8</h1>
-        <ul>
-           
-        </ul>
+        
+        <div id="app"> 
+            <h1 :title="massageRus">{{massage}}</h1>
+        </div>
+        
     </main>
     <footer>
         &copy; Гундарева Анжела, ФБИ-31, 2 курс, 2025
     </footer>
+    <script>
+        Vue.createApp({
+            data() {
+                return{
+                    massage: 'Hello!',
+                    massageRus: "Привет!",
+                }
+            },
+        }).mount('#app');
+    </script>
 </body>
 </html>
